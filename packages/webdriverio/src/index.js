@@ -6,6 +6,31 @@ import MultiRemote from './multiremote'
 import { WDIO_DEFAULTS } from './constants'
 import { getPrototype } from './utils'
 
+// Capability names that are defined in the W3C spec.
+const W3C_CAPABILITY_NAMES = new Set([
+    'acceptInsecureCerts',
+    'browserName',
+    'platformName',
+    'browserVersion',
+    'name',
+    'pageLoadStrategy',
+    'proxy',
+    'setWindowRect',
+    'timeouts',
+    'unhandledPromptBehavior',
+]);
+
+function filterNonW3CCaps(capabilities) {
+  let newCaps = JSON.parse(JSON.stringify(capabilities));
+  for (let k of Object.keys(newCaps)) {
+    // Any key containing a colon is a vendor-prefixed capability.
+    if (!(W3C_CAPABILITY_NAMES.has(k) || k.indexOf(':') >= 0)) {
+      delete newCaps[k];
+    }
+  }
+  return newCaps;
+}
+
 /**
  * A method to create a new session with WebdriverIO
  *
@@ -27,6 +52,11 @@ export const remote = async function (params = {}, remoteModifier) {
     if (params.user && params.key) {
         params = Object.assign({}, detectBackend(params), params)
     }
+
+    const myAPIName = params.capabilities.browser_api_name;
+
+params.capabilities = filterNonW3CCaps(params.capabilities);
+params.capabilities.browser_api_name = myAPIName;
 
     if(params.outputDir){
         process.env.WDIO_LOG_PATH = path.join(params.outputDir, 'wdio.log')

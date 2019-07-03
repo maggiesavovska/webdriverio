@@ -1,3 +1,4 @@
 /packages/**/build
 /packages/**/node_modules
 /packages/**/coverage
+/packages/
