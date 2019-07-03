@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "webdriverio-mjedit",
+  "name": "webdriverio",
   "scripts": {
     "create": "node ./scripts/generateSubPackage",
     "bootstrap": "npm run clean && lerna bootstrap --no-ci && npm run link",
