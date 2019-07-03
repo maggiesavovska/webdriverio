@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name":"webdriverio-mjedit",
+  "name": "webdriverio-mjedit",
   "scripts": {
     "create": "node ./scripts/generateSubPackage",
     "bootstrap": "npm run clean && lerna bootstrap --no-ci && npm run link",
@@ -113,5 +113,24 @@
     "lockfiles": {
       "outOfRangeUpdatesOnly": true
     }
-  }
+  },
+  "description": "<p align=\"center\">     <a href=\"https://webdriver.io/\">         <img alt=\"WebdriverIO\" src=\"http://www.christian-bromann.com/wdio.png\" width=\"546\">     </a> </p>",
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "test": "tests"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maggiesavovska/webdriverio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maggiesavovska/webdriverio/issues"
+  },
+  "homepage": "https://github.com/maggiesavovska/webdriverio#readme"
 }
